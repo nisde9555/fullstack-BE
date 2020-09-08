@@ -10,6 +10,7 @@ const socketIO = require('./socketIO');
 
 const app = express();
 
+const url = 'mongodb://127.0.0.1:27017/fullstack'
 const port = 6060;
 
 app.use(cors());
@@ -30,6 +31,7 @@ app.use((error, req, res, next) => {
 
 mongoose
   .connect('mongodb+srv://test:test@cluster0-sosu9.mongodb.net/test')
+  // .connect(url)
   .then(result => {
     const server = app.listen(port);
     const io = require('./socket').init(server);
